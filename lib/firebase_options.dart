@@ -41,46 +41,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAVPsmucU5Ja3vKaddsqSSZ7yhMBKLqhOc',
-    appId: '1:171459677318:web:d97e630b26411b54e11507',
-    messagingSenderId: '171459677318',
-    projectId: 'blackcoffer-test-9f149',
-    authDomain: 'blackcoffer-test-9f149.firebaseapp.com',
-    storageBucket: 'blackcoffer-test-9f149.appspot.com',
+    apiKey: 'AIzaSyBbffD-sR06rWqSufW8FsBJbExoXeJ2qg8',
+    appId: '1:642315707176:web:6c776598b10e1fbdaf661d',
+    messagingSenderId: '642315707176',
+    projectId: 'blackcoffer-test-bcc7e',
+    authDomain: 'blackcoffer-test-bcc7e.firebaseapp.com',
+    storageBucket: 'blackcoffer-test-bcc7e.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCRvZjopaPcqKOFPryD4aJNWmrTfqR7QiY',
-    appId: '1:171459677318:android:20cd47c9730f6d7ee11507',
-    messagingSenderId: '171459677318',
-    projectId: 'blackcoffer-test-9f149',
-    storageBucket: 'blackcoffer-test-9f149.appspot.com',
+    apiKey: 'AIzaSyCdqngtjJWin9lWXlvkiMoTh9rS46ZQl3A',
+    appId: '1:642315707176:android:92eeaa57acc602eaaf661d',
+    messagingSenderId: '642315707176',
+    projectId: 'blackcoffer-test-bcc7e',
+    storageBucket: 'blackcoffer-test-bcc7e.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDAlpu981BihOSAClHPY6qZB-IgTGB97M0',
-    appId: '1:171459677318:ios:3728f5a4b7cbcc6fe11507',
-    messagingSenderId: '171459677318',
-    projectId: 'blackcoffer-test-9f149',
-    storageBucket: 'blackcoffer-test-9f149.appspot.com',
+    apiKey: 'AIzaSyDpYMNV3Kt8IrhUs-G0mqaZkg8FHfgCqh0',
+    appId: '1:642315707176:ios:2c47589768348781af661d',
+    messagingSenderId: '642315707176',
+    projectId: 'blackcoffer-test-bcc7e',
+    storageBucket: 'blackcoffer-test-bcc7e.appspot.com',
     iosBundleId: 'com.example.blackcofferTest',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDAlpu981BihOSAClHPY6qZB-IgTGB97M0',
-    appId: '1:171459677318:ios:3728f5a4b7cbcc6fe11507',
-    messagingSenderId: '171459677318',
-    projectId: 'blackcoffer-test-9f149',
-    storageBucket: 'blackcoffer-test-9f149.appspot.com',
+    apiKey: 'AIzaSyDpYMNV3Kt8IrhUs-G0mqaZkg8FHfgCqh0',
+    appId: '1:642315707176:ios:2c47589768348781af661d',
+    messagingSenderId: '642315707176',
+    projectId: 'blackcoffer-test-bcc7e',
+    storageBucket: 'blackcoffer-test-bcc7e.appspot.com',
     iosBundleId: 'com.example.blackcofferTest',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAVPsmucU5Ja3vKaddsqSSZ7yhMBKLqhOc',
-    appId: '1:171459677318:web:a23e09e59c9e62d8e11507',
-    messagingSenderId: '171459677318',
-    projectId: 'blackcoffer-test-9f149',
-    authDomain: 'blackcoffer-test-9f149.firebaseapp.com',
-    storageBucket: 'blackcoffer-test-9f149.appspot.com',
+    apiKey: 'AIzaSyBbffD-sR06rWqSufW8FsBJbExoXeJ2qg8',
+    appId: '1:642315707176:web:f0a64675f12f0c9eaf661d',
+    messagingSenderId: '642315707176',
+    projectId: 'blackcoffer-test-bcc7e',
+    authDomain: 'blackcoffer-test-bcc7e.firebaseapp.com',
+    storageBucket: 'blackcoffer-test-bcc7e.appspot.com',
   );
 }

@@ -1,6 +1,7 @@
 import 'package:blackcoffer_test/LoginScreen/enterOTP.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,31 +11,33 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _phoneController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
-  Future<void> _sendOTP() async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+91' + _phoneController.text,
-      verificationCompleted: (PhoneAuthCredential credential) {},
-      verificationFailed: (FirebaseAuthException e) {},
-      codeSent: (String verificationId, int? resendToken) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => EnterOTP(
-              verificationId: verificationId,
-            ),
-          ),
-        );
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
+  sendcode() async {
+    try {
+      await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: '+91' + phoneController.text,
+        verificationCompleted: (PhoneAuthCredential credential) {},
+        verificationFailed: (FirebaseAuthException e) {
+          Get.snackbar('Error', e.message.toString());
+        },
+        codeSent: (String verficationid, int? resendtoken) {
+          Get.to(EnterOTP(verificationid: verficationid));
+        },
+        codeAutoRetrievalTimeout: (verificationId) {},
+      );
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar('Error', e.message.toString());
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: ListView(
+        shrinkWrap: true,
         children: [
           SizedBox(
             height: 100,
@@ -44,28 +47,37 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 300,
             width: 300,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: TextField(
-              controller: _phoneController,
-              decoration: InputDecoration(
-                  hintText: 'Enter Phone Number',
-                  suffixIcon: const Icon(Icons.phone),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  )),
-            ),
-          ),
+          phoneText(),
           SizedBox(
             height: 24,
           ),
-          ElevatedButton(
-            onPressed: () async {
-              await _sendOTP();
-            },
-            child: const Text('Next'),
-          ),
+          button(),
         ],
+      ),
+    );
+  }
+
+  Widget button() {
+    return ElevatedButton(
+      onPressed: () async {
+        sendcode();
+      },
+      child: const Text('Next'),
+    );
+  }
+
+  Widget phoneText() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: TextField(
+        controller: phoneController,
+        decoration: InputDecoration(
+            prefix: Text('+91'),
+            hintText: 'Enter Phone Number',
+            prefixIcon: const Icon(Icons.phone),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(24),
+            )),
       ),
     );
   }

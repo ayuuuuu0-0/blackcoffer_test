@@ -1,47 +1,42 @@
+import 'dart:developer';
+
 import 'package:blackcoffer_test/HomeScreen/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import 'package:pinput/pinput.dart';
 
 class EnterOTP extends StatefulWidget {
-  final String verificationId;
+  final String verificationid;
 
-  EnterOTP({Key? key, required this.verificationId}) : super(key: key);
+  EnterOTP({Key? key, required this.verificationid}) : super(key: key);
 
   @override
   _EnterOTPState createState() => _EnterOTPState();
 }
 
 class _EnterOTPState extends State<EnterOTP> {
-  final _otpController = TextEditingController();
+  var code = '';
 
-  Future<void> _verifyOTP() async {
-    final PhoneAuthCredential credential = PhoneAuthProvider.credential(
-      verificationId: widget.verificationId,
-      smsCode: _otpController.text,
-    );
-
+  signIn() async {
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: widget.verificationid, smsCode: code);
     try {
       await FirebaseAuth.instance
           .signInWithCredential(credential)
-          .then((value) => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HomeScreen(),
-                ),
-              ));
-      // TODO: Navigate to next screen after successful sign in
+          .then((value) => Get.offAll(HomeScreen()));
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar('Error', e.message.toString());
     } catch (e) {
-      // TODO: Handle error
+      Get.snackbar('Error', e.toString());
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Enter OTP'),
-      ),
-      body: Column(
+      body: ListView(
+        shrinkWrap: true,
         children: <Widget>[
           SizedBox(
             height: 100,
@@ -51,21 +46,35 @@ class _EnterOTPState extends State<EnterOTP> {
             height: 300,
             width: 300,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: TextField(
-              controller: _otpController,
-              decoration: InputDecoration(
-                hintText: 'Enter OTP',
-              ),
-              keyboardType: TextInputType.number,
-            ),
+          textcode(),
+          SizedBox(
+            height: 24,
           ),
-          ElevatedButton(
-            onPressed: _verifyOTP,
-            child: Text('Verify'),
-          ),
+          button(),
         ],
+      ),
+    );
+  }
+
+  Widget button() {
+    return ElevatedButton(
+      onPressed: () {
+        signIn();
+      },
+      child: Text('Verify'),
+    );
+  }
+
+  Widget textcode() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: Pinput(
+          length: 6,
+          onChanged: (value) {
+            code = value;
+          },
+        ),
       ),
     );
   }
