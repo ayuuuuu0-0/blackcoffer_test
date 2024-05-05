@@ -58,11 +58,27 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget button() {
-    return ElevatedButton(
-      onPressed: () async {
-        sendcode();
-      },
-      child: const Text('Next'),
+    return Container(
+      width: 200, // Set the width
+      height: 50, // Set the height
+      child: Center(
+        // Wrap the button in a Center widget
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.black,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
+          ),
+          onPressed: () async {
+            sendcode();
+          },
+          child: const Text(
+            'Next',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 

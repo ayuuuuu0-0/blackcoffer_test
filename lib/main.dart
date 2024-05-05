@@ -1,5 +1,7 @@
 import 'package:blackcoffer_test/HomeScreen/homeScreen.dart';
 import 'package:blackcoffer_test/LoginScreen/loginScreen.dart';
+import 'package:blackcoffer_test/mainTabView.dart';
+import 'package:blackcoffer_test/uploadInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'firebase_options.dart';
@@ -25,7 +27,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: MainTabView(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -36,6 +36,9 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   get: ^4.6.5
   pinput: ^3.0.1
+  camera: ^0.10.5+5
+  video_player: ^2.7.0
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -48,3 +51,7 @@ flutter:
 
   assets:
     - assets/blackcoffer.png
+    - assets/explore.png
+    - assets/explore_active.png
+    - assets/library.png
+    - assets/library_active.png

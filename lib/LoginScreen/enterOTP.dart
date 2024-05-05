@@ -57,11 +57,26 @@ class _EnterOTPState extends State<EnterOTP> {
   }
 
   Widget button() {
-    return ElevatedButton(
-      onPressed: () {
-        signIn();
-      },
-      child: Text('Verify'),
+    return Container(
+      width: 200, // Set the width
+      height: 50, // Set the height
+      child: Center(
+          // Wrap the button in a Center widget
+          child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
+        ),
+        onPressed: () {
+          signIn();
+        },
+        child: Text(
+          'Verify',
+          style: TextStyle(color: Colors.white),
+        ),
+      )),
     );
   }
 
