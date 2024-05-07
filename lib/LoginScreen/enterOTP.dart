@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:blackcoffer_test/HomeScreen/homeScreen.dart';
+import 'package:blackcoffer_test/VideoScreen/upload_form.dart';
+import 'package:blackcoffer_test/mainTabView.dart';
+import 'package:blackcoffer_test/uploadInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -24,7 +27,7 @@ class _EnterOTPState extends State<EnterOTP> {
     try {
       await FirebaseAuth.instance
           .signInWithCredential(credential)
-          .then((value) => Get.offAll(HomeScreen()));
+          .then((value) => Get.offAll(SignUpBody()));
     } on FirebaseAuthException catch (e) {
       Get.snackbar('Error', e.message.toString());
     } catch (e) {
