@@ -47,7 +47,7 @@ class _MainTabViewState extends State<MainTabView> {
                     )
                   ]),
               child: Icon(
-                Icons.camera_alt,
+                Icons.add,
                 color:
                     currentTab is VideoScreen ? Colors.white : Colors.black54,
                 size: 35,

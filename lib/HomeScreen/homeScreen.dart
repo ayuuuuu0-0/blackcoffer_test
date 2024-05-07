@@ -1,4 +1,8 @@
+import 'package:blackcoffer_test/globalVar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,6 +12,41 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // FirebaseAuth _auth = FirebaseAuth.instance;
+
+  // getMyData() {
+  //   FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc(uid)
+  //       .get()
+  //       .then((results) {
+  //     setState(() {
+  //       userImageurl = results.data()!['userImage'];
+  //       getUserName = results.data()!['userName'];
+  //     });
+  //   });
+  // }
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+
+  //   uid = FirebaseAuth.instance.currentUser!.uid;
+  //   getMyData();
+  // }
+
+  bool showCard = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 5), () {
+      setState(() {
+        showCard = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +85,31 @@ class _HomeScreenState extends State<HomeScreen> {
                       // Handle filter icon press
                     },
                   ),
+                  showCard
+                      ? Card(
+                          child: Column(
+                            children: <Widget>[
+                              Image.network(
+                                  'https://example.com/image.jpg'), // Replace with your image URL
+                              ListTile(
+                                leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      'https://example.com/user.jpg'), // Replace with your user image URL
+                                ),
+                                title: Text(
+                                    'Video Title'), // Replace with your video title
+                                subtitle: Text(
+                                    'Video Description'), // Replace with your video description
+                              ),
+                              Text(
+                                  'Category: Video Category'), // Replace with your video category
+                            ],
+                          ),
+                        )
+                      : Container(),
                 ],
               ),
             ),
-            // Add more widgets to the column here
           ],
         ),
       ),
